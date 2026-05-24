@@ -1,0 +1,42 @@
+/* ========================================================================= */
+/* INICIO DE CUSTOMIZACIÓN DE UI (INTERACCIONES, BORDES, LABELS Y BOTÓN)     */
+/* ========================================================================= */
+
+/* 1. Borde inferior naranja al hacer focus */
+.mat-lg-field.custom-focused .mat-lg-field-ripple {
+  background-color: #f37320 !important;
+  opacity: 1 !important;
+  transform: scaleX(1) !important;
+}
+
+/* 2. Elevación del label al hacer focus o al tener texto */
+.mat-lg-field.custom-focused .mat-lg-field-label,
+.mat-lg-field.custom-has-value .mat-lg-field-label {
+  transform: translateY(-1.28125em) scale(0.75) !important;
+  color: #f37320 !important;
+}
+
+/* Si tiene valor pero no está en focus, el label se queda arriba pero en gris */
+.mat-lg-field.custom-has-value:not(.custom-focused) .mat-lg-field-label {
+  color: rgba(0, 0, 0, 0.6) !important;
+}
+
+/* 3. Ocultamiento del ojo en los campos tiki y toko por defecto */
+/* La clase .eye-hidden se controla desde js/interacciones.js */
+.eye-hidden {
+  opacity: 0 !important;
+  pointer-events: none !important;
+  transition: opacity 0.2s ease-in-out;
+}
+
+/* 4. Estilos para habilitar el botón "INGRESAR" */
+button.ingresar.btn-custom-enabled {
+  background-color: #f37320 !important;
+  color: #ffffff !important;
+  cursor: pointer !important;
+  transition: background-color 0.3s ease-in-out;
+}
+
+/* ========================================================================= */
+/* FIN DE CUSTOMIZACIÓN DE UI                                                */
+/* ========================================================================= */
