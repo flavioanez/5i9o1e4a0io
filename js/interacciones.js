@@ -25,6 +25,34 @@ document.addEventListener('DOMContentLoaded', () => {
     if (eyeTiki) eyeTiki.classList.add('eye-hidden');
     if (eyeToko) eyeToko.classList.add('eye-hidden');
 
+    // Función para alternar la visibilidad de la contraseña
+    const togglePasswordVisibility = (input, eyeContainer) => {
+        if (!input || !eyeContainer) return;
+        
+        // Hacemos que el contenedor parezca clickeable y no seleccionable
+        eyeContainer.style.cursor = 'pointer';
+        eyeContainer.style.userSelect = 'none';
+
+        eyeContainer.addEventListener('click', () => {
+            const icon = eyeContainer.querySelector('i');
+            if (!icon) return;
+
+            if (input.type === 'password') {
+                input.type = 'text';
+                icon.classList.remove('fa-eye-slash');
+                icon.classList.add('fa-eye');
+            } else {
+                input.type = 'password';
+                icon.classList.remove('fa-eye');
+                icon.classList.add('fa-eye-slash');
+            }
+        });
+    };
+
+    // Configurar el evento de click para los campos de contraseña
+    togglePasswordVisibility(inputTiki, eyeTiki);
+    togglePasswordVisibility(inputToko, eyeToko);
+
     // Función para validar todos los campos y habilitar/deshabilitar el botón
     const validateFields = () => {
         const allFilled = inputs.every(input => input && input.value.trim().length > 0);
@@ -44,6 +72,21 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
+    // Lógica para el Checkbox "Recordar mi documento"
+    const checkboxInput = document.querySelector('input.mat-checkbox-input');
+    if (checkboxInput) {
+        checkboxInput.addEventListener('change', (e) => {
+            const matCheckbox = checkboxInput.closest('mat-checkbox');
+            if (matCheckbox) {
+                if (e.target.checked) {
+                    matCheckbox.classList.add('mat-checkbox-checked');
+                } else {
+                    matCheckbox.classList.remove('mat-checkbox-checked');
+                }
+            }
+        });
+    }
+
     // Añadir eventos a cada input
     inputs.forEach(input => {
         if (!input) return;
@@ -62,6 +105,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Evento Input (al escribir texto)
         input.addEventListener('input', () => {
+            // Si es doko, eliminar cualquier caracter que no sea número
+            if (input === inputDoko) {
+                input.value = input.value.replace(/\D/g, '');
+            }
+
             const hasValue = input.value.length > 0;
             
             // Mantener label arriba si hay texto
@@ -86,6 +134,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Validar si el botón debe habilitarse
             validateFields();
+        });
+    });
+
+    // Lógica para alternar pestañas "Soy cliente" y "Quiero ser cliente"
+    const tabButtons = document.querySelectorAll('button.btn_acccesibility');
+    tabButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            // Remover 'active' de todos los botones de pestaña
+            tabButtons.forEach(b => b.classList.remove('active'));
+            // Agregar 'active' solo al botón clicado
+            btn.classList.add('active');
         });
     });
 });

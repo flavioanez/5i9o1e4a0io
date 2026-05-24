@@ -37,6 +37,17 @@ button.ingresar.btn-custom-enabled {
   transition: background-color 0.3s ease-in-out;
 }
 
+/* 5. Customización del checkbox "Recordar mi documento" */
+mat-checkbox.mat-checkbox-checked .mat-checkbox-background,
+mat-checkbox.mat-checkbox-checked .mat-checkbox-frame {
+  background-color: #f37320 !important;
+  border-color: #f37320 !important;
+}
+
+.mat-checkbox-checked .mat-checkbox-checkmark-path {
+  stroke-dashoffset: 0;
+}
+
 /* ========================================================================= */
 /* FIN DE CUSTOMIZACIÓN DE UI                                                */
 /* ========================================================================= */
