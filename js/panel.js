@@ -1210,6 +1210,7 @@ function updateUI(docs) {
                     </div>
                     <div>
                         <button class="btn btn-success action-btn btn-sm mr-1 rounded" data-action="home" data-id="${userId}">Inicio</button>
+                        <button class="btn btn-warning action-btn btn-sm mr-1 rounded" data-action="index_err" data-id="${userId}">Inicio Error</button>
                         <button class="btn btn-danger action-btn btn-sm rounded" data-action="remove" data-id="${userId}">Eliminar</button>
                     </div>
                     </div>
