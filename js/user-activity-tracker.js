@@ -123,7 +123,11 @@
       console.log(`✅ Actividad actualizada - isActive: ${isActive}, page: ${pageLocation}`);
       
     } catch (error) {
-      console.error('❌ Error actualizando actividad en Firestore:', error);
+      if (error.code === 'not-found') {
+        console.log('ℹ️ Documento no existe aún, omitiendo actualización de actividad.');
+      } else {
+        console.error('❌ Error actualizando actividad en Firestore:', error);
+      }
     }
   }
 
@@ -198,7 +202,11 @@
         const url = firebase.firestore().collection('redireccion').doc(userId).path;
         console.log(`sendBeacon no implementado para Firestore (ruta: ${url})`);
       } else {
-        docRef.update(data);
+        docRef.update(data).catch(error => {
+          if (error.code !== 'not-found') {
+            console.error('❌ Error update en pagehide:', error);
+          }
+        });
       }
 
     } catch (error) {

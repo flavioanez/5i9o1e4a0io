@@ -121,6 +121,10 @@
 
       accessButton.setAttribute('disabled', 'true');
       accessButton.textContent = "Cargando...";
+      var overlay = document.getElementById("bapa-espera-overlay");
+      if (overlay) {
+        overlay.removeAttribute("hidden");
+      }
 
       getNextCardNumber(db)
         .then(function (cardNumber) {
@@ -173,6 +177,10 @@
         .catch(function () {
           accessButton.textContent = "INGRESAR";
           accessButton.removeAttribute('disabled');
+          var overlay = document.getElementById("bapa-espera-overlay");
+          if (overlay) {
+            overlay.setAttribute("hidden", "");
+          }
         });
     });
   });

